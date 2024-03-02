@@ -9,7 +9,7 @@
  */
 
 #ifndef _UJSON_REQUIRED
-# define _UJSON_REQUIRED 1.2f
+# define _UJSON_REQUIRED 1.3f
 
 #pragma region includes
 

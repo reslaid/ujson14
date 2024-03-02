@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ujson.h>
+#include <ujson_ext/ujsonb.h>
 
 int main() {
     // Create a JSON string.
