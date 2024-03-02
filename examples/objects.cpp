@@ -3,7 +3,7 @@
 
 int main() {
     // Create a JSON string.
-    tstring_t json = _T("{\"name\": \"John Doe\", \"age\": 30, \"isMarried\": false, \"children\": [\"Alice\", \"Bob\"]}");
+    tstring_t json = _T("{\"name\": \"John Doe\", \"age\": 30, \"isMarried\": false, \"children\": [{\"name\": \"Alice\", \"age\": 10}, {\"name\": \"Bob\", \"age\": 8}]}");
 
     // Parse the JSON string.
     ujson::JParser parser(json);
@@ -23,7 +23,7 @@ int main() {
     ujson::jarray_t childs = parsed(_T("children")).arrayValue;
 
     for (const ujson::jvalue_t& child : childs) {
-        std::cout << (tchar_t *)child << std::endl;
+        std::cout << (tchar_t *)child("name") << " : " << std::to_string((long)child("age")) << std::endl;
     }
 
     return 0;

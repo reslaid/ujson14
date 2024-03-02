@@ -1,38 +1,19 @@
-#pragma once
-
-#ifndef _UJSON_BINARY_EXTENSION
-#define _UJSON_BINARY_EXTENSION 0.8f
-
 #include "../ujson/defs.h"
-
 #include <vector>
+#include <string>
+#include <sstream>
 
-typedef __uint8_t                jbyte_t;
+#define jbyte_t                  unsigned tchar_t
 typedef std::vector<jbyte_t>     jbytes_t;
 
 namespace UJson14 {
     namespace Binary {
-
-        /**
-         * @brief Converts a string to a byte vector.
-         * @param str The string to convert.
-         * @return bytes_t The byte vector.
-         */
-        jbytes_t strToByteVector(const tstring_t& str) {
-            jbytes_t bytes(str.size());
-            std::copy(str.begin(), str.end(), bytes.begin());
-            return bytes;
+        tstring_t deserialize(const jbytes_t& bytes) {
+            return tstring_t(bytes.begin(), bytes.end());
         }
 
-        /**
-         * @brief Converts a byte vector to a string.
-         * @param bytes The byte vector to convert.
-         * @return tstring_t The resulting string.
-         */
-        tstring_t byteVectorToStr(const jbytes_t& bytes) {
-            return tstring_t(bytes.begin(), bytes.end());
+        jbytes_t serialize(const std::string& str) {
+            return jbytes_t(str.begin(), str.end());
         }
     }
 }
-
-#endif // !_UJSON_BINARY_EXTENSION

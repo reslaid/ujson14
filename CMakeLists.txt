@@ -10,21 +10,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(includes)
 
-set(SOURCE_FILES
+set(ARR_EXAMPLE_SOURCE_FILES
     examples/array.cpp
     includes/ujson/json.cpp
 )
 
-add_executable(ujson14.out ${SOURCE_FILES})
+set(OBJECTS_EXAMPLE_SOURCE_FILES
+    examples/objects.cpp
+    includes/ujson/json.cpp
+)
 
-set(CMAKE_CXX_STANDARD 11)
-add_executable(ujson11.out ${SOURCE_FILES})
-
-set(CMAKE_CXX_STANDARD 17)
-add_executable(ujson17.out ${SOURCE_FILES})
-
-set(CMAKE_CXX_STANDARD 20)
-add_executable(ujson20.out ${SOURCE_FILES})
-
-set(CMAKE_CXX_STANDARD 23)
-add_executable(ujson23.out ${SOURCE_FILES})
+add_executable(ujson-array_example-std14.out ${ARR_EXAMPLE_SOURCE_FILES})
+add_executable(ujson-objects_example-std14.out ${OBJECTS_EXAMPLE_SOURCE_FILES})
