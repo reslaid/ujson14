@@ -1,2 +1,2 @@
 @echo off
-python -m tests.run
+python tests/run.py
