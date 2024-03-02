@@ -96,7 +96,7 @@ namespace UJson14
          * @brief Conversion operator to string.
          * @return tstring_t The string value.
          */
-        operator tstring_t () const {
+        operator tstring_t() const {
             return this->strValue;
         }
 
@@ -132,6 +132,15 @@ namespace UJson14
             return this->objectValue;
         }
     };
+
+    JValue NewJValue(JType type);
+    JValue NewJValue(double value);
+    JValue NewJValue(long value);
+    JValue NewJValue(const tstring_t& value);
+    JValue NewJValue(const tchar_t* value);
+    JValue NewJValue(bool value);
+    JValue NewJValue(const std::vector<JValue>& value);
+    JValue NewJValue(const std::unordered_map<tstring_t, JValue>& value);
 
     #pragma endregion // !enum & !structures
 

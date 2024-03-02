@@ -1,5 +1,60 @@
 #include "json.h"
 
+UJson14::JValue UJson14::NewJValue(UJson14::JType type) {
+    UJson14::JValue result;
+    result.type = type;
+    return result;
+}
+
+UJson14::JValue UJson14::NewJValue(double value) {
+    UJson14::JValue result;
+    result.type = UJson14::JType::NUMBER;
+    result.numValue = value;
+    return result;
+}
+
+UJson14::JValue UJson14::NewJValue(long value) {
+    UJson14::JValue result;
+    result.type = JType::NUMBER;
+    result.numValue = value;
+    return result;
+}
+
+UJson14::JValue UJson14::NewJValue(const tstring_t& value) {
+    UJson14::JValue result;
+    result.type = JType::STRING;
+    result.strValue = value;
+    return result;
+}
+
+UJson14::JValue UJson14::NewJValue(const tchar_t* value) {
+    UJson14::JValue result;
+    result.type = JType::STRING;
+    result.strValue = (tstring_t)value;
+    return result;
+}
+
+UJson14::JValue UJson14::NewJValue(bool value) {
+    UJson14::JValue result;
+    result.type = JType::BOOL;
+    result.boolValue = value;
+    return result;
+}
+
+UJson14::JValue UJson14::NewJValue(const std::vector<UJson14::JValue>& value) {
+    UJson14::JValue result;
+    result.type = UJson14::JType::ARRAY;
+    result.arrayValue = value;
+    return result;
+}
+
+UJson14::JValue UJson14::NewJValue(const std::unordered_map<tstring_t, UJson14::JValue>& value) {
+    UJson14::JValue result;
+    result.type = UJson14::JType::OBJECT;
+    result.objectValue = value;
+    return result;
+}
+
 UJson14::JParser::JParser(const tstring_t& json) : json(json), index(0) {}
 
 UJson14::JValue UJson14::JParser::parse() {

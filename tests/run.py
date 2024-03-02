@@ -41,7 +41,28 @@ def test_memory_leak(path: str):
     else:
         print(f'=== Test failed, target: {path}\n')
 
+def test(path: str):
+    if "test" in path:
+        try:
+            process = subprocess.Popen([path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout, stderr = process.communicate()
+
+            print('=+ Running unit testing..')
+
+            stdout = stdout.decode()
+            stderr = stderr.decode()
+            
+            output = stdout + stderr
+        
+            print(output)
+
+        except FileNotFoundError:
+            print("To run a unit test you need to build!")
+            exit(2)
+    else:
+        test_memory_leak(path)
+
 if __name__ == "__main__":
     for filename in os.listdir(build_path):
         if filename.startswith('ujson') and filename.endswith(executable_ext):
-            test_memory_leak(build_path + filename)
+            test(build_path + filename)
