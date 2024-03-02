@@ -56,6 +56,16 @@ A class representing a JSON value.
 - `std::vector<JValue> arrayValue`: The array value of the JSON value (for `ARRAY` type).
 - `std::unordered_map<tstring_t, JValue> objectValue`: The object value of the JSON value (for `OBJECT` type).
 
+- Operators
+
+     - `operator double() const` - **conversion operator to double (numValue)**.
+     - `operator long() const` - **conversion operator to long ((long)numValue)**.
+     - `operator tstring_t() const` - **conversion operator to tstring_t (strValue)**.
+     - `operator tchar_t*() const` - **conversion operator to tchar_t\* (strValue.c_str)**.
+     - `operator bool() const` - **conversion operator to bool (boolValue)**.
+     - `operator jarray_t() const` - **conversion operator to jarray_t (arrayValue)**.
+     - `operator jobj_t() const` - **conversion operator to jobj_t (objectValue)**.
+
 ## Namespaces
 
 ### `UJson14`
@@ -65,38 +75,6 @@ The namespace that contains the classes and functions for the UJson14 library.
 - `UJson14::JValue`: The class representing a JSON value.
 - `UJson14::JParser`: The class for parsing JSON strings.
 - `UJson14::NewJValue`: Functions for creating `JValue` objects with specific types or values.
-
-
-## Main classes and structures
-
-### JValue
-
-**The `JValue` structure represents a JSON value. It has the following fields**:
-
-- `type` - **value type** (`JType`).
-- `strValue` - **string value** (if applicable).
-- `numValue` - **numeric value** (if applicable).
-- `boolValue` - **boolean value** (if applicable).
-- `objectValue` - **JSON object** (if applicable).
-- `arrayValue` - **JSON array** (if applicable).
-
-**The `JValue` structure also has the following conversion operators**:
-
-- `operator double() const` - **conversion operator to double (numValue)**.
-- `operator long() const` - **conversion operator to long ((long)numValue)**.
-- `operator tstring_t() const` - **conversion operator to tstring_t (strValue)**.
-- `operator tchar_t*() const` - **conversion operator to tchar_t\* (strValue.c_str)**.
-- `operator bool() const` - **conversion operator to bool (boolValue)**.
-- `operator jarray_t() const` - **conversion operator to jarray_t (arrayValue)**.
-- `operator jobj_t() const` - **conversion operator to jobj_t (objectValue)**.
-
-### JParser
-
-**The `JParser` class is used to parse JSON strings. It has the following methods**:
-
-- `JParser(const tstring_t& json)` - **constructor**.
-- `JValue parse()` - **method for parsing JSON string**.
-- `tstring_t stringify(const JValue& value, unsigned int indent = 0, unsigned int currentIndent = 0)` - **method for converting `JValue` to a string**.
 
 ## Macros
 ### _T
