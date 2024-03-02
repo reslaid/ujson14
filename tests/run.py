@@ -3,10 +3,10 @@ import re
 import subprocess
 
 valgrind: str = 'valgrind'
-build_path: str = './build'
+build_path: str = './build/'
 executable_ext: str = '.out'
 if os.name == 'nt':
-    build_path += '/Debug'
+    build_path += 'Debug/'
     executable_ext += '.exe'
 
 def test_memory_leak(path: str):
