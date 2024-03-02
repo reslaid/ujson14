@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../ujson/defs.h"
 #include <vector>
 #include <string>
@@ -12,7 +14,7 @@ namespace UJson14 {
             return tstring_t(bytes.begin(), bytes.end());
         }
 
-        jbytes_t serialize(const std::string& str) {
+        jbytes_t serialize(const tstring_t& str) {
             return jbytes_t(str.begin(), str.end());
         }
     }
