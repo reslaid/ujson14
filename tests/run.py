@@ -3,6 +3,11 @@ import re
 import subprocess
 
 valgrind: str = 'valgrind'
+build_path: str = './build'
+executable_ext: str = '.out'
+if os.name == 'nt':
+    build_path += '/Debug'
+    executable_ext += '.exe'
 
 def test_memory_leak(path: str):
     try:
@@ -37,6 +42,6 @@ def test_memory_leak(path: str):
         print(f'=== Test failed, target: {path}\n')
 
 if __name__ == "__main__":
-    for filename in os.listdir('./build'):
-        if filename.startswith('ujson') and filename.endswith('.out'):
-            test_memory_leak('./build/' + filename)
+    for filename in os.listdir(build_path):
+        if filename.startswith('ujson') and filename.endswith(executable_ext):
+            test_memory_leak(build_path + filename)
