@@ -34,7 +34,7 @@ def test_memory_leak(path: str):
     if match:
         num_errors: int = int(match.group(1))
 
-    print(f'=== {num_errors} erros found, target: {path}')
+    print(f'=== {num_errors} errors found, target: {path}')
 
     if noleaks and num_errors == 0: 
         print(f'=== Test passed, target: {path}\n')
